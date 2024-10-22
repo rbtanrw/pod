@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web-service
+  labels:
+    app: simple-web-service
+
+spec:
+  replicas: 4
+
+  selector:
+    matchLabels:
+      app: simple-web-service
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+  template:
+    metadata:
+      labels:
+        app: simple-web-service
+
+    spec:
+      containers:
+        name: simple-web-service
+        image: rbtan/docker-asg
+        imagePullPolicy: Always

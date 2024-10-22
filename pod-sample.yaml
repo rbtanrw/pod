@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-web-service
+  labels:
+    app: simple-web-service
+
+spec:
+  containers: 
+  - name: simple-web-service
+    image: rbtan/docker-asg
+    ports:
+      - containerPort: 8080
